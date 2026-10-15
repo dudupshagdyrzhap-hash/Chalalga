@@ -1,91 +1,184 @@
 <!DOCTYPE html>
-<html lang="tyv">
+<html lang="ty">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чалалга — Эзир-оол & Монгун-Ай</title>
+    <title>Чалалга — Сурун биле Августа</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --primary-color: #8B0000;
+            --gold: #D4AF37;
+            --text-color: #333333;
+            --bg-color: #FAFAFA;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #1a1a1a;
-            color: #d4af37;
-            font-family: 'Times New Roman', serif;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             text-align: center;
-            overflow-x: hidden;
         }
-        .music-bar {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            background: rgba(26, 26, 26, 0.95);
-            padding: 15px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid #d4af37;
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            min-height: 100vh;
         }
-        .music-btn {
-            background: transparent;
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-size: 14px;
+
+        header {
+            padding: 40px 0 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        h1.title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .names {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #222;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .and-symbol {
+            font-family: 'Great Vibes', cursive;
+            color: var(--gold);
+            font-size: 2.5rem;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .photo-container {
+            width: 100%;
+            max-width: 350px;
+            height: 350px;
+            margin: 25px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .invitation-text {
+            font-size: 1.1rem;
+            margin: 30px 0;
+            padding: 0 10px;
+            color: #555;
+        }
+
+        .details-card {
+            background-color: #FFFDF9;
+            border: 1px solid #EEDC9A;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .details-item {
+            margin: 15px 0;
+        }
+
+        .details-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.85rem;
             letter-spacing: 1px;
         }
-        section {
-            min-height: 100vh;
-            padding: 80px 20px 40px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 2px solid #333;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+
+        .details-value {
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            margin-top: 5px;
         }
-        h1, h2 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            max-width: 600px;
-        }
-        .names {
-            font-size: 38px;
-            font-style: italic;
+
+        .audio-player {
             margin: 20px 0;
-            color: #fff;
         }
-        .date {
-            font-size: 22px;
-            letter-spacing: 3px;
-            margin-top: 15px;
-            color: #d4af37;
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
         }
-        .frame {
-            border: 2px solid #d4af37;
-            padding: 30px 20px;
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .timer {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .timer-box {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #d4af37;
-            padding: 10px;
-            min-width: 70px;
-        }
-        .timer-num { font-size: 22px; font-weight: bold; }
-        .timer-label { font-size: 12px; }
-        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 class="title">Хүндүлүг аалчылар!</h1>
+            <p>Силерни бистиң байырлалывысче чалап олур бис!</p>
+        </header>
+
+        <section class="names-section">
+            <div class="names">
+                Сурун
+                <span class="and-symbol">&</span>
+                Августа
+            </div>
+        </section>
+
+        <div class="photo-container">
+            <img src="couple.jpg" alt="Сурун биле Августа" onerror="this.src='https://via.placeholder.com/350x350?text=%D0%A1%D1%83%D1%80%D1%83%D0%BD+%26+%D0%90%D0%B2%D0%B3%D1%83%D1%81%D1%82%D0%B0';">
+        </div>
+
+        <section class="audio-player">
+            <audio controls autoplay loop>
+                <source src="music.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио.
+            </audio>
+        </section>
+
+        <section class="invitation-text">
+            Бистиң чуртталгавыста эң-не чугула болгаш чылыг хүннерниң бири — найыр-байырлалывысты кады эрттиреринче чалап олур бис.
+        </section>
+
+        <div class="details-card">
+            <div class="details-item">
+                <div class="details-label">Хүнү</div>
+                <div class="details-value">16 Август 2026 чыл</div>
+            </div>
+            
+            <div class="details-item">
+                <div class="details-label">Үези</div>
+                <div class="details-value">17:00 шакта</div>
+            </div>
+
+            <div class="details-item">
+                <div class="details-label">Чер-дежи</div>
+                <div class="details-value">Ресторан / Зал</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Силерни четкизибиске чедир манап турар бис!</p>
+        </footer>
+    </div>
+
+</body>
+</html>
