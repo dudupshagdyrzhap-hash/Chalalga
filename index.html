@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tyv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чалалга — Эзир-оол & Монгун-Ай</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #1a1a1a;
+            color: #d4af37;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .music-bar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 15px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #d4af37;
+        }
+        .music-btn {
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        section {
+            min-height: 100vh;
+            padding: 80px 20px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #333;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+        }
+        h1, h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            max-width: 600px;
+        }
+        .names {
+            font-size: 38px;
+            font-style: italic;
+            margin: 20px 0;
+            color: #fff;
+        }
+        .date {
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin-top: 15px;
+            color: #d4af37;
+        }
+        .frame {
+            border: 2px solid #d4af37;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .timer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .timer-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #d4af37;
+            padding: 10px;
+            min-width: 70px;
+        }
+        .timer-num { font-size: 22px; font-weight: bold; }
+        .timer-label { font-size: 12px; }
+        
