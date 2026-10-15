@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tyv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чалалга — Эзир-оол & Монгун-Ай</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #1a1a1a;
+            color: #d4af37;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        /* Музыкальный плеер */
+        .music-bar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 15px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #d4af37;
+        }
+        .music-btn {
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 80px 20px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #333;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+        }
+
+        h1, h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            max-width: 600px;
+        }
+        .names {
+            font-size: 38px;
+            font-style: italic;
+            margin: 20px 0;
+            color: #fff;
+        }
+        .date {
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin-top: 15px;
+            color: #d4af37;
+        }
+        .frame {
+            border: 2px solid #d4af37;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            position: relative;
+        }
+        /* Таймер */
+        .timer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .timer-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #d4af37;
+            padding: 10px;
+            min-width: 70px;
+        }
+        .timer-num { font-size: 22px; font-weight: bold; }
+        .timer-label { font-size: 12px; }
+
+        /* Фото */
+        .photo-container img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #d4af37;
+            margin-bottom: 20px;
+        }
+
+        /* Форма */
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 400px;
+            gap: 15px;
+            text-align: left;
+        }
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #d4af37;
+            color: #fff;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .radio-group { margin: 10px 0; }
+        label { font-size: 16px; cursor: pointer; display: block; margin-bottom: 8px; }
+        .submit-btn {
+            background: #222;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #d4af37; color: #1a1a1a; }
+    </style>
+</head>
+<body>
+
+    <!-- Музыкальный фон -->
+    <div class="music-bar">
+        <button class="music-btn" id="musicToggle" onclick="toggleMusic()">МУЗЫКА ♫</button>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Экран 1: Главная -->
+    <section>
+        <div class="frame">
+            <p style="font-size: 15px;">КЕЛИН КЫСКА ШАЙ БУЗАР<br>БАЙЫРЛАЛЧЕ ЧАЛАЛГА</p>
+            <div class="names">Эзир-оол<br>&amp;<br>Монгун-Ай</div>
+            <div class="date">АВГУСТ | 16 | 2026</div>
+        </div>
+    </section>
+
+    <!-- Экран 2: Текст приглашения -->
+    <section>
+        <h2>Хүндүлүг төрелдер!</h2>
+        <p>Тоол шагдан, Бурун шагдан өгбелерниң Домаа-сөзүн, ёзу-чаңчылын, дүрүмнерин Ол-ла олчаан кадагалап арттырып кээр Келин кысты айтырар деп байырлалче...</p>
+        <p>Өгбелерниң ёзу-чаңчыл аайы-биле өөрүшкүңер, йорээлинер сөңнеп тургаш, Өлчей-кежик, буян-чолду актап тургаш Актын-агын, кежик-чолдап йорээвишаан Амырганнар кээриңерни чаладывыс!</p>
+    </section>
+
+    <!-- Экран 3: Место и время -->
+    <section>
+        <h2>Болур чери</h2>
+        <p>Байыр-дой өргээзи "Серебро"<br>Кызыл хоорай, Набережная, 53</p>
+        <p style="margin-top: 20px; font-weight: bold;">Эгелээри 16:00 шакта</p>
+    </section>
+
+    <!-- Экран 4: Фото и таймер -->
+    <section>
+        <div class="photo-container">
+            <img src="couple.jpg" alt="Молодожены">
+        </div>
+        <p>Байырлалга чедир арткан хонуктар:</p>
+        <div class="timer">
+            <div class="timer-box"><div class="timer-num" id="days">00</div><div class="timer-label">Хонук</div></div>
+            <div class="timer-box"><div class="timer-num" id="hours">00</div><div class="timer-label">Шак</div></div>
+            <div class="timer-box"><div class="timer-num" id="minutes">00</div><div class="timer-label">Минута</div></div>
+            <div class="timer-box"><div class="timer-num" id="seconds">00</div><div class="timer-label">Секунда</div></div>
+        </div>
+    </section>
+
+    <!-- Экран 5: Форма -->
+    <section>
+        <div class="frame" style="max-width: 500px;">
+            <h2>Чалалгага харыылаарыңарны диледивис:</h2>
+            <form onsubmit="sendForm(event)">
+                <p>Долу ат-сывыңар:</p>
+                <input type="text" required placeholder="ФИО / Имя">
+                
+                <p style="margin-top: 15px;">Байырлалга келир силер бе?</p>
+                <div class="radio-group">
+                    <label><input type="radio" name="come" required> Ийе, баар мен (бис)</label>
+                    <label><input type="radio" name="come"> Чок, шыдавас мен (бис)</label>
+                </div>
+
+                <p style="margin-top: 15px;">Өөңер ээзи (ишти)-биле келир силер бе?</p>
+                <div class="radio-group">
+                    <label><input type="radio" name="with" required> Ийе</label>
+                    <label><input type="radio" name="with"> Чок</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Харыыны чортур</button>
+            </form>
+            <p style="margin-top: 20px; font-size: 14px;">Айтырыглар тургустунуп келзе, харылзажыр дугаары: <br><b>8 (923) 383-83-63</b></p>
+        </div>
+    </section>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        let isPlaying = false;
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                document.getElementById('musicToggle').innerText = "МУЗЫКА ♫";
+                isPlaying = false;
+            } else {
+                music.play().then(() => {
+                    document.getElementById('musicToggle').innerText = "ПАУЗА ❚❚";
+                    isPlaying = true;
+                }).catch(e => alert("Нажмите еще раз для включения музыки"));
+            }
+        }
+
+        const weddingDate = new Date('August 16, 2026 16:00:00').getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if(diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        function sendForm(e) {
+            e.preventDefault();
+            alert("Подтверждение отправлено!");
+        }
+    </script>
+</body>
+</html>
